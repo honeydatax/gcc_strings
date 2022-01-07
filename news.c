@@ -8,5 +8,6 @@ int main(){
 	print(s1);
 	s1=catString(s1,b);
 	print(s1);
+	free(s1);
 	return 0;
 }
