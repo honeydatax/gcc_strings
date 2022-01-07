@@ -22,3 +22,13 @@ char *catString(char *a,char *b){
 	if(c!=NULL)strcat(c,b);
 	return c;
 }
+
+char *strString(char a,int i){
+	char *c;
+	int n;
+	int ii=i+5;
+	c=malloc(ii);
+	for(n=0;n<ii;n++)c[n]=a;
+	c[i]=0;
+	return c;
+}
