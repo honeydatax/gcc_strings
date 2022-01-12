@@ -87,3 +87,27 @@ char *catNString(char *a,char *b,int n){
 	}
 	return c;
 }
+//replace string
+char *replaceString(char *c,char *cc,char *c1){
+	char *c2;
+	char *ccc;
+	char *cccc;
+	int l=strlen(cc);
+	int n=0;
+	int r=0;
+	ccc=c;
+	c2=newString("");
+	while (r!=1){
+		cccc=strstr(ccc,cc);
+		if(cccc!=NULL){
+			n=cccc-ccc;
+			catNString(c2,ccc,n);
+			catString(c2,c1);
+			ccc=cccc+l;
+		}else{
+			r=1;
+			catString(c2,ccc);
+		}
+	}
+	return c2;
+}

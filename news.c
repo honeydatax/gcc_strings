@@ -21,6 +21,9 @@ int main(){
 	s1=catNString(s1,s2,5);
 	print(s1);
 	free(s2);
+	s2=replaceString(s1,"world","wr");
+	print(s2);
+	free(s2);
 	free(s1);
 	return 0;
 }
