@@ -22,13 +22,39 @@ char *catString(char *a,char *b){
 	if(c!=NULL)strcat(c,b);
 	return c;
 }
-
+//fill new string
 char *strString(char a,int i){
 	char *c;
 	int n;
 	int ii=i+5;
 	c=malloc(ii);
-	for(n=0;n<ii;n++)c[n]=a;
+	memset(c,a,i);
 	c[i]=0;
+	return c;
+}
+//add a string to end of a string
+char *appendString(char *cc,char a,int i){
+	char *c;
+	char *ccc;
+	int n=strlen(cc)+i;
+	c=NULL;
+	ccc=strString(a,i);
+	if (cc!=NULL && ccc!=NULL){
+		c=catString(cc,ccc);
+		free(ccc);
+	}		
+	return c;
+}
+//add a string to front of a string
+char *frontString(char *cc,char a,int i){
+	char *c;
+	char *ccc;
+	int n=strlen(cc)+i;
+	c=NULL;
+	ccc=strString(a,i);
+	if (cc!=NULL && ccc!=NULL){
+		c=catString(ccc,cc);
+		free(cc);
+	}		
 	return c;
 }
