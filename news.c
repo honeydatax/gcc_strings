@@ -6,6 +6,7 @@ int main(){
 	char *b="hi.";
 	char *s1;
 	char *s2;
+	char *arr;
 	print (d);
 	s2=strString('*',20);
 	s1=newString(a);
@@ -23,6 +24,8 @@ int main(){
 	free(s2);
 	s2=replaceString(s1,"world","wr");
 	print(s2);
+	arr=newPointer(s1);
+	printList(arr);
 	free(s2);
 	free(s1);
 	return 0;

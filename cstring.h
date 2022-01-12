@@ -2,8 +2,24 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
+//print string
 void print(char *a){
 	puts(a);
+}
+void printList(char *cc){
+	int *i;
+	char *c;
+	int n;
+	int count=0;
+	if(cc!=NULL){
+		i=(int *) cc;
+		count=*(i+0);
+		for(n=0;n<count;n++){
+			c=(char *) *(i+1);
+			print(c);
+		}
+	}
 }
 
 //create a new string from a constante
@@ -110,4 +126,16 @@ char *replaceString(char *c,char *cc,char *c1){
 		}
 	}
 	return c2;
+}
+char *newPointer(char *c){
+	char *cc;
+	int *i;
+	int ii;
+	cc=malloc(20);
+	if(cc!=NULL){
+		i=(int *)cc;
+		*(i+0)=1;
+		*(i+1)=(int)(c);
+	}
+	return cc;
 }
