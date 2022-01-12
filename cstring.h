@@ -58,3 +58,18 @@ char *frontString(char *cc,char a,int i){
 	}		
 	return c;
 }
+void *replaceCharString(char *c,char cc,char c1){
+	char *ccc;
+	char *cccc;
+	int r=0;
+	ccc=c;
+	while (r!=1){
+		cccc=strchr(ccc,cc);
+		if(cccc!=NULL){
+			ccc=cccc+1;
+			cccc[0]=c1;
+		}else{
+			r=1;
+		}
+	}
+}

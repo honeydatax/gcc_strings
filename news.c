@@ -15,6 +15,8 @@ int main(){
 	print(s1);
 	s1=frontString(s1,'*',20);
 	print(s1);
+	replaceCharString(s1,'*','!');
+	print(s1);
 	free(s1);
 	return 0;
 }
