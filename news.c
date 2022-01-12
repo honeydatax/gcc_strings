@@ -7,6 +7,7 @@ int main(){
 	char *s1;
 	char *s2;
 	print (d);
+	s2=strString('*',20);
 	s1=newString(a);
 	print(s1);
 	s1=catString(s1,b);
@@ -17,6 +18,9 @@ int main(){
 	print(s1);
 	replaceCharString(s1,'*','!');
 	print(s1);
+	s1=catNString(s1,s2,5);
+	print(s1);
+	free(s2);
 	free(s1);
 	return 0;
 }

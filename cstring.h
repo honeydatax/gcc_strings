@@ -58,6 +58,7 @@ char *frontString(char *cc,char a,int i){
 	}		
 	return c;
 }
+//replace chars
 void *replaceCharString(char *c,char cc,char c1){
 	char *ccc;
 	char *cccc;
@@ -72,4 +73,17 @@ void *replaceCharString(char *c,char cc,char c1){
 			r=1;
 		}
 	}
+}
+//append same text into it string
+char *catNString(char *a,char *b,int n){
+	char *c;
+	char *cc;
+	int i=strlen(a)+n+6;
+	c=realloc(a,i);
+	if(c!=NULL){
+		cc=c+strlen(a);
+		strncpy(cc,b,n);
+		cc[n]=0;
+	}
+	return c;
 }
