@@ -16,7 +16,7 @@ void printList(char *cc){
 		i=(int *) cc;
 		count=*(i+0);
 		for(n=0;n<count;n++){
-			c=(char *) *(i+1);
+			c=(char *) *(i+(n+1));
 			print(c);
 		}
 	}
@@ -127,6 +127,7 @@ char *replaceString(char *c,char *cc,char *c1){
 	}
 	return c2;
 }
+//new list
 char *newPointer(char *c){
 	char *cc;
 	int *i;
@@ -136,6 +137,28 @@ char *newPointer(char *c){
 		i=(int *)cc;
 		*(i+0)=1;
 		*(i+1)=(int)(c);
+	}
+	return cc;
+}
+char *addPointer(char *c1,char *c){
+	char *cc;
+	int *i;
+	int *it;
+	int ii;
+	int count;
+	int mes=0;
+	cc=NULL;
+	if(c1!=NULL){
+		i=(int *) c1;
+		count=*(i+0);
+		count++;
+		*(i+0)=count;
+		cc=realloc(c1,(count*4)+8);
+		if(cc!=NULL){
+			it=(int *)cc;
+			mes=count;
+			*(it+mes)=(int)(c);
+		}
 	}
 	return cc;
 }
