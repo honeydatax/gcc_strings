@@ -162,3 +162,33 @@ char *addPointer(char *c1,char *c){
 	}
 	return cc;
 }
+char *splitString(char *c,char cc){
+	char *c1;
+	char *ccc;
+	char *cccc;
+	int count=0;
+	int r=0;
+	char *arr;
+	ccc=c;
+	while (r!=1){
+		cccc=strchr(ccc,cc);
+		if(cccc!=NULL){
+			if(count==0){
+				arr=newPointer(ccc);
+			}else{
+				arr=addPointer(arr,ccc);
+			}
+			ccc=cccc+1;
+			cccc[0]=0;
+			count++;
+		}else{
+			if(count==0){
+				arr=newPointer(ccc);
+			}else{
+				arr=addPointer(arr,ccc);
+			}
+			r=1;
+		}
+	}
+	return arr;
+}

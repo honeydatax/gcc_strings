@@ -23,5 +23,10 @@ int main(){
 	free(arr);
 	free(s2);
 	free(s1);
+	s1=newString("arg0,arg1,arg2,arg3,arg4,arg5");
+	arr=splitString(s1,',');
+	printList(arr);
+	free(arr);
+	free(s1);
 	return 0;
 }
