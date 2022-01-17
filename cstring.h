@@ -24,18 +24,42 @@ void printList(char *cc){
 
 //create a new string from a constante
 char *newString(char *a){
+	char *aa;
 	char *c;
-	int i=strlen(a)+5;
+	char *cc="";
+	int i=5;
+	if (a!=NULL){
+		i=i+strlen(a);
+		aa=a;
+	}else{
+		i=5;
+		aa=cc;
+	}
 	c=malloc(i);
-	if(c!=NULL)strcpy(c,a);
+	if(c!=NULL)strcpy(c,aa);
 	return c;
 }
 //append same text into it string
 char *catString(char *a,char *b){
+	char *aa;
+	char *bb;
 	char *c;
-	int i=strlen(a)+strlen(b)+5;
-	c=realloc(a,i);
-	if(c!=NULL)strcat(c,b);
+	int i=5;
+	char *nulls="";
+	if (a==NULL){
+		aa=newString(nulls);
+	}else{
+		i=i+strlen(a);
+		aa=a;
+	}
+	if (b==NULL){
+		bb=nulls;
+	}else{
+		i=i+strlen(b)+5;
+		bb=b;
+	}
+	c=realloc(aa,i);
+	if(c!=NULL)strcat(c,bb);
 	return c;
 }
 //fill new string
@@ -44,33 +68,51 @@ char *strString(char a,int i){
 	int n;
 	int ii=i+5;
 	c=malloc(ii);
-	memset(c,a,i);
-	c[i]=0;
+	if(c!=NULL){
+		memset(c,a,i);
+		c[i]=0;
+	}
 	return c;
 }
 //add a string to end of a string
 char *appendString(char *cc,char a,int i){
+	char *aa;
 	char *c;
 	char *ccc;
-	int n=strlen(cc)+i;
+	int n=i+5;
+	char *nulls="";
+	if (cc==NULL){
+		aa=newString(nulls);
+	}else{
+		n=n+strlen(cc);
+		aa=cc;
+	}
 	c=NULL;
 	ccc=strString(a,i);
-	if (cc!=NULL && ccc!=NULL){
-		c=catString(cc,ccc);
+	if (aa!=NULL && ccc!=NULL){
+		c=catString(aa,ccc);
 		free(ccc);
 	}		
 	return c;
 }
 //add a string to front of a string
 char *frontString(char *cc,char a,int i){
+	char *aa;
 	char *c;
 	char *ccc;
-	int n=strlen(cc)+i;
+	char *nulls="";
+	int n=i+5;
+	if (cc==NULL){
+		aa=newString(nulls);
+	}else{
+		n=n+strlen(cc);
+		aa=cc;
+	}
 	c=NULL;
 	ccc=strString(a,i);
-	if (cc!=NULL && ccc!=NULL){
-		c=catString(ccc,cc);
-		free(cc);
+	if (aa!=NULL && ccc!=NULL){
+		c=catString(ccc,aa);
+		free(aa);
 	}		
 	return c;
 }
@@ -80,13 +122,15 @@ void *replaceCharString(char *c,char cc,char c1){
 	char *cccc;
 	int r=0;
 	ccc=c;
-	while (r!=1){
-		cccc=strchr(ccc,cc);
-		if(cccc!=NULL){
-			ccc=cccc+1;
-			cccc[0]=c1;
-		}else{
-			r=1;
+	if(c!=NULL){
+		while (r!=1){
+			cccc=strchr(ccc,cc);
+			if(cccc!=NULL){
+				ccc=cccc+1;
+				cccc[0]=c1;
+			}else{
+				r=1;
+			}
 		}
 	}
 }
@@ -94,31 +138,74 @@ void *replaceCharString(char *c,char cc,char c1){
 char *catNString(char *a,char *b,int n){
 	char *c;
 	char *cc;
-	int i=strlen(a)+n+6;
-	c=realloc(a,i);
+	char *aa;
+	char *bb;
+	char *nulls="";
+	int i=n+6;
+	if (a==NULL){
+		aa=newString(nulls);
+	}else{
+		i=i+strlen(a);
+		aa=a;
+	}
+	if (b==NULL){
+		bb=nulls;
+	}else{
+		bb=b;
+	}
+		
+	c=realloc(aa,i);
 	if(c!=NULL){
-		cc=c+strlen(a);
-		strncpy(cc,b,n);
+		cc=c+strlen(aa);
+		strncpy(cc,bb,n);
 		cc[n]=0;
 	}
 	return c;
 }
 //replace string
 char *replaceString(char *c,char *cc,char *c1){
+	char *cl;
+	char *cll;
 	char *c2;
 	char *ccc;
 	char *cccc;
-	int l=strlen(cc);
+	char *nulls="";
+	int l=0;
 	int n=0;
 	int r=0;
 	ccc=c;
 	c2=newString("");
+	
+	if (c==NULL){
+		ccc=nulls;
+		l=0;
+	}else{
+		ccc=c;
+}
+
+	if (cc==NULL){
+		cl=nulls;
+	}else{
+		cl=cc;
+	}
+	
+	if (c1==NULL){
+		cll=nulls;
+		l=0;
+	}else{
+		l=strlen(c1);
+		cll=c1;
+	}
+	
+	
+	
+	r=0;
 	while (r!=1){
-		cccc=strstr(ccc,cc);
+		cccc=strstr(ccc,cl);
 		if(cccc!=NULL){
 			n=cccc-ccc;
 			catNString(c2,ccc,n);
-			catString(c2,c1);
+			catString(c2,cll);
 			ccc=cccc+l;
 		}else{
 			r=1;
