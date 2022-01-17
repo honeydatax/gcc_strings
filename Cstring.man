@@ -1,0 +1,78 @@
+for not out of memory of a string you must
+------------------------------------------
+//create a new string from a constant string
+char *s;
+s=newString("hello world...");
+print(s);
+if(s!=NULL) free(s);
+-------------------------------------------
+//add text into a string
+char *s;
+s=newString("hello world...");
+s=catString(s,"hi...");
+print(s);
+if(s!=NULL) free(s);
+----------------------------------------------
+//create a string to same char
+char *s;
+s=strString('*',20);
+if(s!=NULL) free(s);
+----------------------------------------------
+//add a sub string to start of the string
+char *s;
+s=newString("hello world...");
+s=appendString(s,'*',20);
+print(s);
+if(s!=NULL) free(s);
+----------------------------------------------
+//add a sub string to start of the string
+char *s;
+s=newString("hello world...");
+s=frontString(s,'*',20);
+print(s);
+if(s!=NULL) free(s);
+----------------------------------------------
+//replacing chars only
+char *s;
+s=strString('*',20);
+print(s);
+replaceCharString(s,'*','!');
+print(s);
+if(s!=NULL) free(s);
+----------------------------------------------
+//append part of a string
+char *s;
+char *s2;
+s2=strString('*',20);
+s=newString("hello world...");
+s=catNString(s,s2,5);
+print(s);
+if(s!=NULL) free(s);
+if(s2!=NULL) free(s2);
+----------------------------------------------
+//replace a string in other
+char *s;
+char *s2;
+s=newString("hello world...");
+s2=replaceString(s1,"world","wr");
+print(s2);
+if(s!=NULL) free(s);
+if(s2!=NULL) free(s2);
+----------------------------------------------
+//create a list 
+char *lst;
+lst=newPointer("item 1");
+lst=addPointer(lst,"item 2");
+printList(lst);
+if(lst!=NULL) free(lst);
+----------------------------------------------
+//split a string
+char *lst;
+char *s;
+s=newString("arg0,arg1,arg2,arg3,arg4,arg5");
+lst=splitString(s,',');
+printList(lst);
+if(lst!=NULL) free(lst);
+if(s!=NULL) free(s);
+----------------------------------------------
+//format of a list firth item is the size of the array
