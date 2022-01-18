@@ -185,15 +185,15 @@ char *replaceString(char *c,char *cc,char *c1){
 
 	if (cc==NULL){
 		cl=nulls;
+		l=0;
 	}else{
 		cl=cc;
+		l=strlen(cl);
 	}
 	
 	if (c1==NULL){
 		cll=nulls;
-		l=0;
 	}else{
-		l=strlen(c1);
 		cll=c1;
 	}
 	
@@ -219,21 +219,35 @@ char *newPointer(char *c){
 	char *cc;
 	int *i;
 	int ii;
+	char *nulls="";
+	char *ccc;
+	if (c==NULL){
+		ccc=nulls;
+	}else{
+		ccc=c;
+	}
 	cc=malloc(20);
 	if(cc!=NULL){
 		i=(int *)cc;
 		*(i+0)=1;
-		*(i+1)=(int)(c);
+		*(i+1)=(int)(ccc);
 	}
 	return cc;
 }
 char *addPointer(char *c1,char *c){
 	char *cc;
+	char *ccc;
 	int *i;
 	int *it;
 	int ii;
+	char *nulls="";
 	int count;
 	int mes=0;
+	if(c==NULL){
+		ccc=nulls;
+	}else{
+		ccc=c;
+	}
 	cc=NULL;
 	if(c1!=NULL){
 		i=(int *) c1;
@@ -244,19 +258,27 @@ char *addPointer(char *c1,char *c){
 		if(cc!=NULL){
 			it=(int *)cc;
 			mes=count;
-			*(it+mes)=(int)(c);
+			*(it+mes)=(int)(ccc);
 		}
 	}
 	return cc;
 }
 char *splitString(char *c,char cc){
+	char *c2;
 	char *c1;
 	char *ccc;
 	char *cccc;
 	int count=0;
 	int r=0;
+	int b=0;
 	char *arr;
 	ccc=c;
+	if(c==NULL){
+		ccc=newString("");
+		b=-1;
+	}else{
+		ccc=c;
+	}
 	while (r!=1){
 		cccc=strchr(ccc,cc);
 		if(cccc!=NULL){
@@ -277,5 +299,6 @@ char *splitString(char *c,char cc){
 			r=1;
 		}
 	}
+	if(b && ccc!=NULL)free(ccc);
 	return arr;
 }
