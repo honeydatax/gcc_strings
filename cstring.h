@@ -21,6 +21,23 @@ void printList(const char *cc){
 		}
 	}
 }
+void deleteItem(const char *cc,int position){
+	int *i;
+	char *c;
+	int n;
+	int count=0;
+	if(cc!=NULL && position>-1){
+		i=(int *) cc;
+		count=*(i+0);
+		if(position<count-1){
+			for(n=position;n<count;n++){
+				c=(char *) *(i+(n+2));
+				*(i+n+1)=(int)(c);
+			}
+			*(i+0)=count-1;
+		}
+	}
+}
 char *getItem(const char *cc,const int nn){
 	int *i;
 	char *c;
