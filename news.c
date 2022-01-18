@@ -13,11 +13,14 @@ int main(){
 	s1=catString(s1,b);
 	s1=appendString(s1,'*',20);
 	s1=frontString(s1,'*',20);
-	replaceCharString(s1,'*','!');
+	replaceCharString(s1,'*',' ');
+	replaceCharString(s2,'*',' ');
 	s1=catNString(s1,s2,5);
 	frees(s2);
 	s1=catNString(s1,"",0);
 	s2=replaceString(s1,"world","wr");
+	s1=trim(s1);
+	s2=trim(s2);
 	arr=newPointer(s1);
 	arr=addPointer(arr,s2);
 	printList(arr);

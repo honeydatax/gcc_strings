@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
+const char *Nnulls="";
 //print string
 void print(const char *a){
 	puts(a);
@@ -316,4 +316,67 @@ char *splitString(char *c,const char cc){
 }
 void frees(char *c){
 	if(c!=NULL)free(c);
+}
+char *ltrim(char *c){
+	char *cc=NULL;
+	size_t t=0;
+	size_t n=0;
+	if(c!=NULL){
+		t=strlen(c);
+		for(n=0;n<t+1;n++){
+			if(c[n]!=0 && c[n]>32){
+				cc=c+n;
+				n=t+2;
+			}else{
+				if(c[n]==0){
+					cc=c+n;
+					n=t+2;
+				}
+			}
+		}
+	}
+	return cc;
+}
+char *rtrim(char *c){
+	char *cc;
+	char *ccc;
+	size_t t=0;
+	size_t n=0;
+	if (c==NULL){
+		cc=newString("");
+	}else{
+		cc=newString(c);
+	}
+	if(cc!=NULL){
+		ccc=cc;
+		t=strlen(cc);
+		for(n=0;n<t;n++){
+			if(cc[n]!=0 && cc[n]>32){
+				ccc=cc+n;
+			}
+		}
+		ccc[0]=0;
+	}
+	return cc;
+}
+
+
+
+char *returnNull(char *c){
+	char *cc;
+	if(c==NULL){
+		cc=newString("");
+	}else{
+		cc=c;
+	}
+	return cc;
+}
+
+char *trim(char *c){
+	char *cc=NULL;
+	if(c!=NULL){
+		cc=ltrim(c);
+		cc=rtrim(cc);
+	}
+	return cc;
 }
