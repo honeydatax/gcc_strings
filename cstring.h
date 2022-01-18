@@ -314,3 +314,6 @@ char *splitString(char *c,const char cc){
 	if(b && ccc!=NULL)free(ccc);
 	return arr;
 }
+void frees(char *c){
+	if(c!=NULL)free(c);
+}

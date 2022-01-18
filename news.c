@@ -15,18 +15,19 @@ int main(){
 	s1=frontString(s1,'*',20);
 	replaceCharString(s1,'*','!');
 	s1=catNString(s1,s2,5);
-	free(s2);
+	frees(s2);
+	s1=catNString(s1,"",0);
 	s2=replaceString(s1,"world","wr");
 	arr=newPointer(s1);
 	arr=addPointer(arr,s2);
 	printList(arr);
-	free(arr);
-	free(s2);
-	free(s1);
+	frees(arr);
+	frees(s2);
+	frees(s1);
 	s1=newString("arg0,arg1,arg2,arg3,arg4,arg5");
 	arr=splitString(s1,',');
 	printList(arr);
-	free(arr);
-	free(s1);
+	frees(arr);
+	frees(s1);
 	return 0;
 }
