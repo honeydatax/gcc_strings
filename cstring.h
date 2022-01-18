@@ -7,6 +7,35 @@ const char *Nnulls="";
 void print(const char *a){
 	puts(a);
 }
+char *addPointer(char *c1,const char *c){
+	char *cc;
+	const char *ccc;
+	int *i;
+	int *it;
+	int ii;
+	char *nulls="";
+	int count;
+	int mes=0;
+	if(c==NULL){
+		ccc=nulls;
+	}else{
+		ccc=c;
+	}
+	cc=NULL;
+	if(c1!=NULL){
+		i=(int *) c1;
+		count=*(i+0);
+		count++;
+		*(i+0)=count;
+		cc=realloc(c1,(count*4)+8);
+		if(cc!=NULL){
+			it=(int *)cc;
+			mes=count;
+			*(it+mes)=(int)(ccc);
+		}
+	}
+	return cc;
+}
 void printList(const char *cc){
 	int *i;
 	char *c;
@@ -21,7 +50,7 @@ void printList(const char *cc){
 		}
 	}
 }
-void deleteItem(const char *cc,int position){
+void deleteItem(char *cc,int position){
 	int *i;
 	char *c;
 	int n;
@@ -37,6 +66,27 @@ void deleteItem(const char *cc,int position){
 			*(i+0)=count-1;
 		}
 	}
+}
+char *holeItem(char *cc,int position){
+	int *i;
+	char *c;
+	char *ccc;
+	char *nulls="";
+	int n;
+	int count=0;
+	ccc=cc;
+	if(cc!=NULL && position>-1){
+		ccc=addPointer(cc,Nnulls);
+		i=(int *) ccc;
+		count=*(i+0);
+		if(position<count){
+			for(n=count-1;n>position-1;n--){
+				c=(char *) *(i+(n+1));
+				*(i+n+2)=(int)(c);
+			}
+		}
+	}
+	return ccc;
 }
 char *getItem(const char *cc,const int nn){
 	int *i;
@@ -73,6 +123,16 @@ void setItem(char *cc,const int nn,char *s1){
 	}
 
 }
+char *insertItem(char *cc,int position,char *ccc){
+	char *cccc;
+	cccc=cc;
+	if(cc!=NULL && ccc!=NULL){
+		cccc=holeItem(cc,position);
+		setItem(cccc,position,ccc);
+	}
+	return cccc;
+}
+
 //create a new string from a constante
 char *newString(const char *a){
 	const char *aa;
@@ -294,35 +354,6 @@ char *newPointer(char *c){
 		i=(int *)cc;
 		*(i+0)=1;
 		*(i+1)=(int)(ccc);
-	}
-	return cc;
-}
-char *addPointer(char *c1,const char *c){
-	char *cc;
-	const char *ccc;
-	int *i;
-	int *it;
-	int ii;
-	char *nulls="";
-	int count;
-	int mes=0;
-	if(c==NULL){
-		ccc=nulls;
-	}else{
-		ccc=c;
-	}
-	cc=NULL;
-	if(c1!=NULL){
-		i=(int *) c1;
-		count=*(i+0);
-		count++;
-		*(i+0)=count;
-		cc=realloc(c1,(count*4)+8);
-		if(cc!=NULL){
-			it=(int *)cc;
-			mes=count;
-			*(it+mes)=(int)(ccc);
-		}
 	}
 	return cc;
 }

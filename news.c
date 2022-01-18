@@ -36,6 +36,7 @@ int main(){
 	s2=getItem(arr,2);
 	setItem(arr,4,s2);
 	deleteItem(arr,2);
+	insertItem(arr,1,s2);
 	printList(arr);
 	frees(arr);
 	frees(s1);
