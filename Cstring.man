@@ -4,33 +4,33 @@ for not out of memory of a string you must
 char *s;
 s=newString("hello world...");
 print(s);
-if(s!=NULL) free(s);
+free(s);
 -------------------------------------------
 //add text into a string
 char *s;
 s=newString("hello world...");
 s=catString(s,"hi...");
 print(s);
-if(s!=NULL) free(s);
+frees(s);
 ----------------------------------------------
 //create a string to same char
 char *s;
 s=strString('*',20);
-if(s!=NULL) free(s);
+frees(s);
 ----------------------------------------------
 //add a sub string to start of the string
 char *s;
 s=newString("hello world...");
 s=appendString(s,'*',20);
 print(s);
-if(s!=NULL) free(s);
+frees(s);
 ----------------------------------------------
 //add a sub string to start of the string
 char *s;
 s=newString("hello world...");
 s=frontString(s,'*',20);
 print(s);
-if(s!=NULL) free(s);
+frees(s);
 ----------------------------------------------
 //replacing chars only
 char *s;
@@ -38,7 +38,7 @@ s=strString('*',20);
 print(s);
 replaceCharString(s,'*','!');
 print(s);
-if(s!=NULL) free(s);
+frees(s);
 ----------------------------------------------
 //append part of a string
 char *s;
@@ -47,8 +47,8 @@ s2=strString('*',20);
 s=newString("hello world...");
 s=catNString(s,s2,5);
 print(s);
-if(s!=NULL) free(s);
-if(s2!=NULL) free(s2);
+frees(s);
+frees(s2);
 ----------------------------------------------
 //replace a string in other
 char *s;
@@ -56,15 +56,15 @@ char *s2;
 s=newString("hello world...");
 s2=replaceString(s1,"world","wr");
 print(s2);
-if(s!=NULL) free(s);
-if(s2!=NULL) free(s2);
+frees(s);
+frees(s2);
 ----------------------------------------------
 //create a list 
 char *lst;
 lst=newPointer("item 1");
 lst=addPointer(lst,"item 2");
 printList(lst);
-if(lst!=NULL) free(lst);
+frees(lst);
 ----------------------------------------------
 //split a string
 char *lst;
@@ -72,7 +72,76 @@ char *s;
 s=newString("arg0,arg1,arg2,arg3,arg4,arg5");
 lst=splitString(s,',');
 printList(lst);
-if(lst!=NULL) free(lst);
-if(s!=NULL) free(s);
+frees(lst);
+frees(s);
 ----------------------------------------------
 //format of a list firth item is the size of the array
+----------------------------------------------
+//rtrim string remove spaces and null chaters from rigth of the string
+char *s;
+char *ss;
+s=newString("hello world...                ");
+ss=rtrim(s);
+print(s);
+print(ss);
+frees(s);
+frees(ss);
+----------------------------------------------
+//ltrim string remove spaces and null chaters from left of the string
+char *s;
+char *ss;
+s=newString("                  hello world...");
+print(s);
+ss=ltrim(s);
+print(ss);
+frees(s);
+----------------------------------------------
+//mid string creates a new string using part of a sub string
+char *s;
+char *ss;
+s=newString("012345678901234567890");
+print(s);
+ss=mid(s,5,10);
+print(ss);
+frees(s);
+frees(ss);
+----------------------------------------------
+//rigth string create n char of the rigth of the string 
+char *s;
+char *ss;
+s=newString("012345678901234567890");
+print(s);
+ss=rigths(s,10);
+print(ss);
+frees(s);
+frees(ss);
+----------------------------------------------
+//lefts string return n char from a string
+char *s;
+char *ss;
+s=newString("012345678901234567890");
+print(s);
+ss=lefts(s,10);
+print(ss);
+frees(s);
+----------------------------------------------
+//edit string create add same chars to the midlle of a string 
+char *s;
+char *ss;
+s=newString("012345678901234567890");
+print(s);
+ss=edit(s,10,10,'>');
+print(ss);
+frees(s);
+frees(ss);
+----------------------------------------------
+//deledit string delete same char in midlle of a string 
+char *s;
+char *ss;
+s=newString("012345678901234567890");
+print(s);
+ss=deledit(s,10,7);
+print(ss);
+frees(s);
+
+
