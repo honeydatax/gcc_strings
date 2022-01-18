@@ -33,6 +33,8 @@ int main(){
 	frees(s4);
 	s1=newString("arg0,arg1,arg2,arg3,arg4,arg5");
 	arr=splitString(s1,',');
+	s2=getItem(arr,2);
+	setItem(arr,4,s2);
 	printList(arr);
 	frees(arr);
 	frees(s1);

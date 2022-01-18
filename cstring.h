@@ -21,7 +21,41 @@ void printList(const char *cc){
 		}
 	}
 }
+char *getItem(const char *cc,const int nn){
+	int *i;
+	char *c;
+	int n;
+	int count=0;
+	c=NULL;
+	if(cc!=NULL){
+		i=(int *) cc;
+		count=*(i+0);
+		n=nn;
+		if (n<count){
+			c=(char *) *(i+(n+1));
+		}
+		return c;
 
+	}
+	return c;
+}
+void setItem(char *cc,const int nn,char *s1){
+	int *i;
+	char *c;
+	int n;
+	int count=0;
+	c=NULL;
+	if(cc!=NULL && s1!=NULL){
+		i=(int *) cc;
+		count=*(i+0);
+		n=nn;
+		if (n<count){
+			*(i+n+1)=(int)(s1);
+			
+		}
+	}
+
+}
 //create a new string from a constante
 char *newString(const char *a){
 	const char *aa;
