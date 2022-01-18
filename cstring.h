@@ -27,7 +27,7 @@ char *newString(char *a){
 	char *aa;
 	char *c;
 	char *cc="";
-	int i=5;
+	size_t i=5;
 	if (a!=NULL){
 		i=i+strlen(a);
 		aa=a;
@@ -44,7 +44,7 @@ char *catString(char *a,char *b){
 	char *aa;
 	char *bb;
 	char *c;
-	int i=5;
+	size_t i=5;
 	char *nulls="";
 	if (a==NULL){
 		aa=newString(nulls);
@@ -63,10 +63,10 @@ char *catString(char *a,char *b){
 	return c;
 }
 //fill new string
-char *strString(char a,int i){
+char *strString(char a,size_t i){
 	char *c;
 	int n;
-	int ii=i+5;
+	size_t ii=i+5;
 	c=malloc(ii);
 	if(c!=NULL){
 		memset(c,a,i);
@@ -75,11 +75,11 @@ char *strString(char a,int i){
 	return c;
 }
 //add a string to end of a string
-char *appendString(char *cc,char a,int i){
+char *appendString(char *cc,char a,size_t i){
 	char *aa;
 	char *c;
 	char *ccc;
-	int n=i+5;
+	size_t n=i+5;
 	char *nulls="";
 	if (cc==NULL){
 		aa=newString(nulls);
@@ -96,12 +96,12 @@ char *appendString(char *cc,char a,int i){
 	return c;
 }
 //add a string to front of a string
-char *frontString(char *cc,char a,int i){
+char *frontString(char *cc,char a,size_t i){
 	char *aa;
 	char *c;
 	char *ccc;
 	char *nulls="";
-	int n=i+5;
+	size_t n=i+5;
 	if (cc==NULL){
 		aa=newString(nulls);
 	}else{
@@ -135,13 +135,13 @@ void *replaceCharString(char *c,char cc,char c1){
 	}
 }
 //append same text into it string
-char *catNString(char *a,char *b,int n){
+char *catNString(char *a,char *b,size_t n){
 	char *c;
 	char *cc;
 	char *aa;
 	char *bb;
 	char *nulls="";
-	int i=n+6;
+	size_t i=n+6;
 	if (a==NULL){
 		aa=newString(nulls);
 	}else{
@@ -171,7 +171,7 @@ char *replaceString(char *c,char *cc,char *c1){
 	char *cccc;
 	char *nulls="";
 	int l=0;
-	int n=0;
+	size_t n=0;
 	int r=0;
 	ccc=c;
 	c2=newString("");
