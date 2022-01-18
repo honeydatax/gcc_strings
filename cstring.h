@@ -380,3 +380,43 @@ char *trim(char *c){
 	}
 	return cc;
 }
+char *mid(const char *c,const int start,const int sizes){
+	char const *cc;
+	int n=0;
+	char *ccc;
+	if(c!=NULL){
+		ccc=NULL;
+		if (start<=(int) strlen(c)){
+			n=sizes;
+			cc=c+start;
+			n=(int) sizes;
+			if (sizes>(int) strlen(cc))n=(int)strlen(cc);
+			ccc=catNString(ccc,cc,(size_t) sizes);
+		}
+	}
+	return ccc;
+}
+char *rigths(char *c,const int sizes){
+	char *cc;
+	int n=0;
+	cc=c;
+	if (c!=NULL){
+		n=(strlen(c)-sizes);
+		if (n<1)n=0;
+		cc=c+n;
+	}
+	return cc;
+}
+char *lefths(char *c,const int sizes){
+	char *cc;
+	char *ccc;
+	int n=0;
+	cc=c;
+	ccc=NULL;
+	if (c!=NULL){
+		n=(int)sizes;
+		if (n>(int)strlen(c))n=(int)strlen(c);
+		ccc=catNString(ccc,c,n);
+	}
+	return ccc;
+}
