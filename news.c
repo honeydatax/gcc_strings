@@ -36,5 +36,14 @@ int main(){
 	printList(arr);
 	frees(arr);
 	frees(s1);
+	s1=newString("Hello World..");
+	s2=edit(s1,5,10,'>');
+	print (s2);
+	frees(s2);
+	frees(s1);
+	s1=newString("Hello ........World..");
+	deledit(s1,13,8);
+	print (s1);
+	frees(s1);
 	return 0;
 }

@@ -420,3 +420,43 @@ char *lefths(char *c,const int sizes){
 	}
 	return ccc;
 }
+char *edit(char *c,const int position,const int add,const char ch ){
+	char *cc;
+	char *ccc;
+	char *cp;
+	cc=NULL;
+	ccc=NULL;
+	cp=NULL;
+	if (c!=NULL && position>0 && add>0){
+		if(position<(int)strlen(c)){
+			ccc=strString(ch,add);
+			cc=c+position;
+			cp=newString(cc);
+			cc[0]=0;
+			cc=c;
+			cc=catString(cc,ccc);
+			frees(ccc);
+			cc=catString(cc,cp);
+			frees(cp);
+		}
+	}
+	return cc;
+}
+void deledit(char *c,const int position,const int sub){
+	char *cc;
+	char *ccc;
+	char *cp;
+	int n=0;
+	cc=NULL;
+	ccc=NULL;
+	cp=NULL;
+	if (c!=NULL && position>0 && sub>0){
+		if(position<(int)strlen(c)){
+			ccc=c+position;
+			n=position-sub;
+			if (n<1)n=0;
+			cp=c+n;
+			strcpy(cp,ccc);
+		}
+	}
+}
