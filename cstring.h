@@ -4,10 +4,10 @@
 
 
 //print string
-void print(char *a){
+void print(const char *a){
 	puts(a);
 }
-void printList(char *cc){
+void printList(const char *cc){
 	int *i;
 	char *c;
 	int n;
@@ -23,8 +23,8 @@ void printList(char *cc){
 }
 
 //create a new string from a constante
-char *newString(char *a){
-	char *aa;
+char *newString(const char *a){
+	const char *aa;
 	char *c;
 	char *cc="";
 	size_t i=5;
@@ -36,18 +36,20 @@ char *newString(char *a){
 		aa=cc;
 	}
 	c=malloc(i);
-	if(c!=NULL)strcpy(c,aa);
+	if(c!=NULL && aa!=NULL)strcpy(c,aa);
 	return c;
 }
 //append same text into it string
-char *catString(char *a,char *b){
+char *catString(char *a,const char *b){
 	char *aa;
-	char *bb;
+	const char *bb;
 	char *c;
 	size_t i=5;
 	char *nulls="";
+	int b0=0;
 	if (a==NULL){
 		aa=newString(nulls);
+		b0=-1;
 	}else{
 		i=i+strlen(a);
 		aa=a;
@@ -59,11 +61,11 @@ char *catString(char *a,char *b){
 		bb=b;
 	}
 	c=realloc(aa,i);
-	if(c!=NULL)strcat(c,bb);
+	if(c!=NULL && aa!=NULL && bb!=NULL)strcat(c,bb);
 	return c;
 }
 //fill new string
-char *strString(char a,size_t i){
+char *strString(const char a,const size_t i){
 	char *c;
 	int n;
 	size_t ii=i+5;
@@ -75,14 +77,17 @@ char *strString(char a,size_t i){
 	return c;
 }
 //add a string to end of a string
-char *appendString(char *cc,char a,size_t i){
+char *appendString(char *cc,char a,const size_t i){
 	char *aa;
 	char *c;
 	char *ccc;
 	size_t n=i+5;
 	char *nulls="";
+	int b0=0;
 	if (cc==NULL){
 		aa=newString(nulls);
+		b0=-1;
+		n=0;
 	}else{
 		n=n+strlen(cc);
 		aa=cc;
@@ -96,14 +101,16 @@ char *appendString(char *cc,char a,size_t i){
 	return c;
 }
 //add a string to front of a string
-char *frontString(char *cc,char a,size_t i){
+char *frontString(char *cc,const char a,const size_t i){
 	char *aa;
 	char *c;
 	char *ccc;
 	char *nulls="";
+	int b0=0;
 	size_t n=i+5;
 	if (cc==NULL){
 		aa=newString(nulls);
+		b0=-1;
 	}else{
 		n=n+strlen(cc);
 		aa=cc;
@@ -113,11 +120,13 @@ char *frontString(char *cc,char a,size_t i){
 	if (aa!=NULL && ccc!=NULL){
 		c=catString(ccc,aa);
 		free(aa);
-	}		
+		b0=0;
+	}
+	if(aa!=NULL && b0)free(aa);
 	return c;
 }
 //replace chars
-void *replaceCharString(char *c,char cc,char c1){
+void *replaceCharString(char *c,const char cc,const char c1){
 	char *ccc;
 	char *cccc;
 	int r=0;
@@ -135,15 +144,18 @@ void *replaceCharString(char *c,char cc,char c1){
 	}
 }
 //append same text into it string
-char *catNString(char *a,char *b,size_t n){
+char *catNString(char *a,const char *b,const size_t n){
 	char *c;
 	char *cc;
 	char *aa;
-	char *bb;
+	const char *bb;
 	char *nulls="";
+	int b0=0;
+	int b1=0;
 	size_t i=n+6;
 	if (a==NULL){
 		aa=newString(nulls);
+		b0=-1;
 	}else{
 		i=i+strlen(a);
 		aa=a;
@@ -163,9 +175,9 @@ char *catNString(char *a,char *b,size_t n){
 	return c;
 }
 //replace string
-char *replaceString(char *c,char *cc,char *c1){
-	char *cl;
-	char *cll;
+char *replaceString(char *c,const char *cc,const char *c1){
+	const char *cl;
+	const char *cll;
 	char *c2;
 	char *ccc;
 	char *cccc;
@@ -234,9 +246,9 @@ char *newPointer(char *c){
 	}
 	return cc;
 }
-char *addPointer(char *c1,char *c){
+char *addPointer(char *c1,const char *c){
 	char *cc;
-	char *ccc;
+	const char *ccc;
 	int *i;
 	int *it;
 	int ii;
@@ -263,7 +275,7 @@ char *addPointer(char *c1,char *c){
 	}
 	return cc;
 }
-char *splitString(char *c,char cc){
+char *splitString(char *c,const char cc){
 	char *c2;
 	char *c1;
 	char *ccc;
