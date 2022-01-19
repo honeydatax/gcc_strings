@@ -620,3 +620,36 @@ char *ListToString(const char *cc,char ch){
 	}
 	return s1;
 }
+char *orderList(char *cc){
+	char *lst;
+	int *i;
+	char *c;
+	int n;
+	int nn;
+	char *s1;
+	int count=0;
+	int counts=1;
+	lst=NULL;
+	s1=NULL;
+	if(cc!=NULL){
+		i=(int *) cc;
+		count=*(i+0);
+		c=(char *) *(i+(1));
+		if(count>0)lst=newPointer(c);
+		if(count>1){
+			for(n=1;n<count;n++){
+				c=(char *) *(i+(n+1));
+				for(nn=0;nn<counts;nn++){
+					s1=getItem(lst,nn);
+					if(strcmp(c,s1)<0){
+							lst=insertItem(lst,nn,c);						
+						nn=counts+1;
+					}
+				}
+				counts++;
+			}
+			
+		}
+	}
+	return lst;
+}
