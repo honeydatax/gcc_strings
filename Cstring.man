@@ -293,12 +293,25 @@ frees(s1);
 	char *s;
 	char *s1;
 	int pos=0;
-	print(d);
 	s=newString("arg0,arg1,arg2,arg3,arg4,arg5");
 	lst=splitString(s,',');
 	lst2=invertList(lst);
 	frees(lst);
 	lst=orderList(lst2);
 	printList(lst);
+	frees(lst2);
+	frees(s);
+-----------------------------------------------------
+	//decedent order of list item
+	char *lst;
+	char *lst2;
+	char *s;
+	char *s1;
+	int pos=0;
+	s=newString("arg0,arg1,arg2,arg3,arg4,arg5");
+	lst=splitString(s,',');
+	lst2=zorderList(lst);
+	printList(lst2);
+	frees(lst);
 	frees(lst2);
 	frees(s);
