@@ -187,7 +187,28 @@ int countList(const char *cc){
 	}
 	return count;
 }
-
+char *invertList(char *cc){
+	char *lst;
+	int *i;
+	char *c;
+	int n;
+	int count=0;
+	lst=NULL;
+	
+	if(cc!=NULL){
+		i=(int *) cc;
+		count=*(i+0);
+		for(n=count-1;n>-1;n--){
+			c=(char *) *(i+(n+1));
+			if(n==count-1){
+				lst=newPointer(c);
+			}else{
+				lst=addPointer(lst,c);
+			}
+		}
+	}
+	return lst;
+}
 //create a new string from a constante
 char *newString(const char *a){
 	const char *aa;
@@ -574,4 +595,28 @@ void deledit(char *c,const int position,const int sub){
 			strcpy(cp,ccc);
 		}
 	}
+}
+char *ListToString(const char *cc,char ch){
+	int *i;
+	char *c;
+	char *s1;
+	char chh[5];
+	int n;
+	int count=0;
+	s1=NULL;
+	chh[0]=ch;
+	chh[1]=0;
+	if(cc!=NULL){
+		i=(int *) cc;
+		count=*(i+0);
+		s1=newString("");
+		for(n=0;n<count;n++){
+			c=(char *) *(i+(n+1));
+			s1=catString(s1,c);
+			if (n<count-1){
+				s1=catString(s1,chh);
+			}
+		}
+	}
+	return s1;
 }
