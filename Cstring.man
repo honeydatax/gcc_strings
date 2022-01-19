@@ -143,5 +143,67 @@ print(s);
 ss=deledit(s,10,7);
 print(ss);
 frees(s);
-
-
+------------------------------------------------------
+****LISTS
+------------------------------------------------------
+//split a string
+char *lst;
+char *s;
+s=newString("arg0,arg1,arg2,arg3,arg4,arg5");
+lst=splitString(s,',');
+printList(lst);
+frees(lst);
+frees(s);
+---------------------------------------------------
+//new list add item
+char *lst;
+lst=newPoiter("1st item");
+lst=addPoiter(lst,"2st item");
+printList(lst);
+frees(lst);
+-----------------------------------------------------
+//delete item
+char *lst;
+char *s;
+int pos=3;
+s=newString("arg0,arg1,arg2,arg3,arg4,arg5");
+lst=splitString(s,',');
+lst=deleteItem(lst,pos);
+printList(lst);
+frees(lst);
+frees(s);
+-----------------------------------------------------
+//insert item at position index
+char *lst;
+char *s;
+int pos=3;
+s=newString("arg0,arg1,arg2,arg3,arg4,arg5");
+lst=splitString(s,',');
+lst=insertItem(lst,pos,"new item");
+printList(lst);
+frees(lst);
+frees(s);
+-----------------------------------------------------
+//insert item at end of the list
+char *lst;
+char *s;
+int pos=3;
+s=newString("arg0,arg1,arg2,arg3,arg4,arg5");
+lst=splitString(s,',');
+lst=addPointer(lst,"new item");
+printList(lst);
+frees(lst);
+frees(s);
+-----------------------------------------------------
+//clone list
+char *lst;
+char newlst;
+char *s;
+int pos=3;
+s=newString("arg0,arg1,arg2,arg3,arg4,arg5");
+lst=splitString(s,',');
+newlst=cloneList(lst);
+printList(newlst);
+frees(lst);
+frees(newlst);
+frees(s);
