@@ -9,6 +9,7 @@ int main(){
 	char *s2;
 	char *s4;
 	char *arr;
+	char *lst;
 	print (d);
 	s2=strString('*',20);
 	s1=newString(a);
@@ -37,7 +38,9 @@ int main(){
 	setItem(arr,4,s2);
 	deleteItem(arr,2);
 	insertItem(arr,1,s2);
-	printList(arr);
+	lst=cloneList(arr);
+	printList(lst);
+	frees(lst);
 	frees(arr);
 	frees(s1);
 	s1=newString("Hello World..");

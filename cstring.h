@@ -3,6 +3,9 @@
 #include <stdio.h>
 
 const char *Nnulls="";
+void frees(char *c){
+	if(c!=NULL)free(c);
+}
 //print string
 void print(const char *a){
 	puts(a);
@@ -131,6 +134,47 @@ char *insertItem(char *cc,int position,char *ccc){
 		setItem(cccc,position,ccc);
 	}
 	return cccc;
+}
+char *newPointer(char *c){
+	char *cc;
+	int *i;
+	int ii;
+	char *nulls="";
+	char *ccc;
+	if (c==NULL){
+		ccc=nulls;
+	}else{
+		ccc=c;
+	}
+	cc=malloc(20);
+	if(cc!=NULL){
+		i=(int *)cc;
+		*(i+0)=1;
+		*(i+1)=(int)(ccc);
+	}
+	return cc;
+}
+char *cloneList(char *cc){
+	char *lst;
+	int *i;
+	char *c;
+	int n;
+	int count=0;
+	lst=NULL;
+	
+	if(cc!=NULL){
+		i=(int *) cc;
+		count=*(i+0);
+		for(n=0;n<count;n++){
+			c=(char *) *(i+(n+1));
+			if(n==0){
+				lst=newPointer(c);
+			}else{
+				lst=addPointer(lst,c);
+			}
+		}
+	}
+	return lst;
 }
 
 //create a new string from a constante
@@ -338,25 +382,6 @@ char *replaceString(char *c,const char *cc,const char *c1){
 	return c2;
 }
 //new list
-char *newPointer(char *c){
-	char *cc;
-	int *i;
-	int ii;
-	char *nulls="";
-	char *ccc;
-	if (c==NULL){
-		ccc=nulls;
-	}else{
-		ccc=c;
-	}
-	cc=malloc(20);
-	if(cc!=NULL){
-		i=(int *)cc;
-		*(i+0)=1;
-		*(i+1)=(int)(ccc);
-	}
-	return cc;
-}
 char *splitString(char *c,const char cc){
 	char *c2;
 	char *c1;
@@ -395,9 +420,6 @@ char *splitString(char *c,const char cc){
 	}
 	if(b && ccc!=NULL)free(ccc);
 	return arr;
-}
-void frees(char *c){
-	if(c!=NULL)free(c);
 }
 char *ltrim(char *c){
 	char *cc=NULL;
