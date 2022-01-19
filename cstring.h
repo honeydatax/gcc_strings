@@ -8,7 +8,7 @@ void frees(char *c){
 }
 //print string
 void print(const char *a){
-	puts(a);
+	if (a!=NULL)puts(a);
 }
 char *addPointer(char *c1,const char *c){
 	char *cc;
@@ -175,6 +175,17 @@ char *cloneList(char *cc){
 		}
 	}
 	return lst;
+}
+int countList(const char *cc){
+	int *i;
+	char *c;
+	int n;
+	int count=0;
+	if(cc!=NULL){
+		i=(int *) cc;
+		count=*(i+0);
+	}
+	return count;
 }
 
 //create a new string from a constante

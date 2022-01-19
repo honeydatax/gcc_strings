@@ -243,3 +243,16 @@ print(s1);
 frees(lst);
 frees(s);
 frees(s1);
+-----------------------------------------------------
+	//count of list item
+	char *lst;
+	char *s;
+	char *s1;
+	int pos=0;
+	s=newString("arg0,arg1,arg2,arg3,arg4,arg5");
+	lst=splitString(s,',');
+	printList(lst);
+	pos=countList(lst);
+	printf("%d\n",pos);
+	frees(lst);
+	frees(s);
