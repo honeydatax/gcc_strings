@@ -207,3 +207,39 @@ printList(newlst);
 frees(lst);
 frees(newlst);
 frees(s);
+-----------------------------------------------------
+//clone list item
+char *lst;
+char *s;
+int pos=3;
+s=newString("arg0,arg1,arg2,arg3,arg4,arg5");
+lst=splitString(s,',');
+lst=holeitem(lst,pos);
+printList(newlst);
+frees(lst);
+frees(s);
+-----------------------------------------------------
+//change list item
+char *lst;
+char *s;
+int pos=3;
+s=newString("arg0,arg1,arg2,arg3,arg4,arg5");
+lst=splitString(s,',');
+lst=holeitem(lst,pos);
+setItem(lst,pos,"new item");
+printList(newlst);
+frees(lst);
+frees(s);
+-----------------------------------------------------
+//get list item
+char *lst;
+char *s;
+char *s1;
+int pos=3;
+s=newString("arg0,arg1,arg2,arg3,arg4,arg5");
+lst=splitString(s,',');
+s1=getitem(lst,pos);
+print(s1);
+frees(lst);
+frees(s);
+frees(s1);
