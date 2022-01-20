@@ -686,3 +686,32 @@ char *zorderList(char *cc){
 	}
 	return lst;
 }
+char *newList(char *c){
+	char *cc;
+	char *lst;
+	cc=newString(c);
+	lst=newPointer(cc);
+	return lst;
+}
+char *addList(char *lst1,char *c){
+	char *cc;
+	char *lst;
+	cc=newString(c);
+	lst=addPointer(lst1,cc);
+	return lst;
+}
+void freeList(char *cc){
+	int *i;
+	char *c;
+	int n;
+	int count=0;
+	if(cc!=NULL){
+		i=(int *) cc;
+		count=*(i+0);
+		for(n=0;n<count;n++){
+			c=(char *) *(i+(n+1));
+			free(c);
+		}
+		free(cc);
+	}
+}
