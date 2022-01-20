@@ -715,3 +715,25 @@ void freeList(char *cc){
 		free(cc);
 	}
 }
+void printnList(const char *cc,const int starts,const int sizes){
+	int *i;
+	char *c;
+	int n;
+	int sstarts=0;
+	int ssizes=0;
+	int count=0;
+	if(cc!=NULL){
+		i=(int *) cc;
+		count=*(i+0);
+		sstarts=starts;
+		ssizes=sizes+starts+1;
+		if (ssizes>count)ssizes=count;
+		if (sstarts>ssizes)sstarts=ssizes-1;
+		for(n=sstarts;n<ssizes;n++){
+			c=(char *) *(i+(n+1));
+			if(n<ssizes){
+				print(c);
+			}
+		}
+	}
+}

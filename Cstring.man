@@ -336,3 +336,23 @@ frees(s1);
 	printList(lst);
 	freeList(lst);
 -----------------------------------------------------
+	//list a number of itens
+	char *lst;
+	char *lst2;
+	char *s;
+	char *s1;
+	int n=0;
+	int pos=0;
+	char ss[2080];
+	s=ss;
+	for(n=0;n<64;n++){
+		sprintf(s,"item %d",n);
+		if(n==0){
+			lst=newList(s);
+		}else{
+			lst=addList(lst,s);
+		}
+	}
+	printnList(lst,16,16);
+	freeList(lst);
+-----------------------------------------------------
